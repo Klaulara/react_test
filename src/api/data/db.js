@@ -1,12 +1,73 @@
-import { Pool } from 'pg'
+import { Pool } from "pg";
 
- 
-const pool = new Pool({
-  user:  process.env.USER,
-  host: process.env.HOST,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
-  port: process.env.PORT,
-})
+export const pool = new Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "prueba",
+  password: "Daemonicus1",
+  port: 5432,
+});
 
-const insert = pool
+export const addData = async () => {
+  const SQLQuery = {
+    text: "INSERT INTO indicadores (id, nombreindicador, codigoindicador, unidadmedidaindicador, valorindicador, fechaindicador, tiempoindicador, origenindicador) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;",
+    values: [id, nombreIndicador, codigoIndicador, unidadMedidaIndicador, valorIndicador, fechaIndicador, tiempoIndicador, origenIndicador],
+  };
+  try {
+    const result = await pool.query(SQLQuery);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getData = async () => {
+  const SQLQuery = {
+    text: "SELECT * FROM indicadores ORDER BY fechaindicador;",
+  };
+  try {
+    const result = await pool.query(SQLQuery);
+    return result.rows;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getDataByDates = async(startDate, endDate) => {
+  const SQLQuery = {
+    text: "SELECT * FROM indicadores WHERE fechaIndicador >= $1 AND fechaIndicador <= $2 RETURNING *;",
+    values: [startDate, endDate]
+  }
+  try {
+    const result = await pool.query(SQLQuery);
+    return result.rows;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const editData = async(data)=>{
+  const SQLQuery = {
+      text: "UPDATE indicadores SET valorindicador=$1, fechaindicador=$2 WHERE id=$3 RETURNING *;",
+      values: data
+  }
+  try {
+      const result = await pool.query(SQLQuery);
+      return result;
+  } catch (error) {
+      console.log(error);
+  }
+};
+
+export const deleteData = async(id) => {
+  const SQLQuery = {
+      text: "DELETE FROM indicadores WHERE id=$1 RETURNING *;",
+      values: id
+  }
+  try {
+      const result = await pool.query(SQLQuery);
+      return result;
+  } catch (error) {
+      console.log(error);
+  }
+};
