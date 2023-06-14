@@ -1,18 +1,12 @@
-import TableData from "@/components/table";
-import { getData } from "@/api/data/db";
+import Link from "next/link";
 
 export default async function Home() {
-  const data = await getData();
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <h1 className="text-5xl">INDICADORES FINANCIEROS (UF)</h1>
-      </div>
-
-      <div className="mt-10">
-        <TableData data={data} />
-      </div>
-    </main>
+    <div className="text-center mt-5">
+      <Link className="bg-slate-400 m-2 p-2 rounded" href="/grafic">Graficos</Link>
+      <Link className="bg-slate-400 m-2 p-2 rounded" href="/rawdata">Raw Data</Link>
+      <Link className="bg-slate-400 m-2 p-2 rounded" href="/add">Agregar Dato</Link>
+    </div>
   );
 }

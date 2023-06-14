@@ -1,11 +1,11 @@
 import React from "react";
 import EditButton from "../buttons/EditButton";
-import DeleteButton from "../buttons/DeleteButton";
+import DeleteRecord from "@/app/rawdata/delete";
 
 const TableData = ({ data }) => {
 
   return (
-    <table class="table-fixed text-center">
+    <table className="table-fixed text-center">
       <thead className="text-xl">
         <tr>
           <th className="w-60">Fecha</th>
@@ -30,7 +30,7 @@ const TableData = ({ data }) => {
               <td>{item.nombreindicador}</td>
               <td>{item.unidadmedidaindicador}</td>
               <td>{item.valorindicador}</td>
-              <td><div className="flex flex-row justify-around"><EditButton id={item.id} /><DeleteButton id={item.id} /></div></td>
+              <td><div className="flex flex-row justify-around"><EditButton id={item.id} date={item.fechaindicador} value={item.valorindicador} /><DeleteRecord id={item.id} /></div></td>
             </tr>
           );
         })}

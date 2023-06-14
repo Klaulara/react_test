@@ -1,14 +1,22 @@
-'use client'
+"use client";
 
-import React from 'react'
+import React from "react";
 import { EditSvg } from "@/components/icons/editSVG";
+import { useRouter } from "next/navigation";
 
-const editItem = (id) => {
-    console.log(id)
-}
+const EditButton = ({ id, date, value }) => {
 
-const EditButton = ({id}) =>(
-    <button onClick={()=>editItem(id)}><EditSvg /></button>
-  )
+  const router = useRouter();
 
-export default EditButton
+  const editItem = (id, date, value) => {
+    router.push(`/edit?id=${id}&date=${date}&value=${value}`);
+  };
+
+  return (
+    <button onClick={() => editItem(id, date, value)}>
+      <EditSvg />
+    </button>
+  );
+};
+
+export default EditButton;
