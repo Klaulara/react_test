@@ -3,7 +3,6 @@ import EditButton from "../buttons/EditButton";
 import DeleteRecord from "@/app/rawdata/delete";
 
 const TableData = ({ data }) => {
-
   return (
     <table className="table-fixed text-center">
       <thead className="text-xl">
@@ -30,7 +29,16 @@ const TableData = ({ data }) => {
               <td>{item.nombreindicador}</td>
               <td>{item.unidadmedidaindicador}</td>
               <td>{item.valorindicador}</td>
-              <td><div className="flex flex-row justify-around"><EditButton id={item.id} date={item.fechaindicador} value={item.valorindicador} /><DeleteRecord id={item.id} /></div></td>
+              <td>
+                <div className="flex flex-row justify-around">
+                  <EditButton
+                    id={item.id}
+                    date={item.fechaindicador}
+                    value={item.valorindicador}
+                  />
+                  <DeleteRecord id={item.id} />
+                </div>
+              </td>
             </tr>
           );
         })}
