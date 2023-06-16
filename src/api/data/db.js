@@ -41,6 +41,22 @@ export const getLastIndex = async() => {
     return result.rows;
 }
 
+export const getStartDate = async() => {
+  const SQLQuery = {
+    text: "SELECT fechaindicador FROM indicadores ORDER BY fechaindicador LIMIT 1;",
+  };
+    const result = await pool.query(SQLQuery);
+    return result.rows;
+}
+
+export const getEndDate = async() => {
+  const SQLQuery = {
+    text: "SELECT fechaindicador FROM indicadores ORDER BY fechaindicador DESC LIMIT 1;",
+  };
+    const result = await pool.query(SQLQuery);
+    return result.rows;
+}
+
 export const getDataById = async(id) => {
   const SQLQuery = {
     text: "SELECT * FROM indicadores WHERE id=$1 ;",
@@ -57,7 +73,7 @@ export const getDataById = async(id) => {
 
 export const getDataByDates = async(startDate, endDate) => {
   const SQLQuery = {
-    text: "SELECT * FROM indicadores WHERE fechaIndicador >= $1 AND fechaIndicador <= $2;",
+    text: "SELECT * FROM indicadores WHERE fechaIndicador >= $1 AND fechaIndicador <= $2 ORDER BY fechaindicador;",
     values: [startDate, endDate]
   }
   try {
