@@ -4,10 +4,10 @@ import { Pool } from "pg";
 import { getData } from "./service/service";
 
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "prueba",
-  password: "Daemonicus1",
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
   port: 5432,
 });
 
