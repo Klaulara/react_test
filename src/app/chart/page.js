@@ -1,12 +1,11 @@
 import Link from "next/link";
 import LineChart from "@/components/lineChart";
-import { allLabels, allValues, startDate, endDate, allLabelsByDate, allValuesByDates } from "./functions";
+import { allLabels, allValues, startDate, endDate } from "./functions";
 
 const labels = await allLabels();
 const values = await allValues();
 const initialDate = await startDate();
 const endingDate = await endDate();
-
 
 const page = async () => {
 

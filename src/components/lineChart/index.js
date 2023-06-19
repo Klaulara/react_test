@@ -5,7 +5,7 @@ import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { useSearchParams } from "next/navigation";
-import { allLabelsByDate, allValuesByDates } from "@/app/grafic/functions";
+import { allLabelsByDate, allValuesByDates } from "@/app/chart/functions";
 
 Chart.register(CategoryScale);
 

@@ -1,6 +1,7 @@
 import React from "react";
 import EditButton from "../buttons/EditButton";
 import DeleteRecord from "@/app/rawdata/delete";
+import DeleteButton from "../buttons/DeleteButton";
 
 const TableData = ({ data }) => {
   return (
@@ -15,7 +16,7 @@ const TableData = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => {
+        {data?.map((item) => {
           const fechaIndicador = new Date(item.fechaindicador);
           const options = { day: "numeric", month: "numeric", year: "numeric" };
           const formattedDate = fechaIndicador.toLocaleDateString(
@@ -36,7 +37,7 @@ const TableData = ({ data }) => {
                     date={item.fechaindicador}
                     value={item.valorindicador}
                   />
-                  <DeleteRecord id={item.id} />
+                  <DeleteButton id={item.id} />
                 </div>
               </td>
             </tr>

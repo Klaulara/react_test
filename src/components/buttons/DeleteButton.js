@@ -2,11 +2,12 @@
 
 import React from "react";
 import { DeleteSvg } from "@/components/icons/deleteSVG";
+import { handleDelete } from "@/app/rawdata/delete";
 
-const DeleteButton = ({ id, onClick }) => {
+const DeleteButton = ({ id }) => {
 
   return (
-    <button onClick={() => onClick(id)}>
+    <button onClick={()=>handleDelete(id)}>
       <DeleteSvg />
     </button>
   );

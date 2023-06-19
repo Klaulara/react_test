@@ -36,12 +36,12 @@ export const allValuesByDates = async (startDate, endDate) => {
 
 export const startDate = async() => {
   const date = await getStartDate();
-  const formattedDate = date[0].fechaindicador.toISOString().slice(0, 10);
+  const formattedDate = date[0]?.fechaindicador.toISOString().slice(0, 10);
   return formattedDate
 }
 
 export const endDate = async() => {
   const date = await getEndDate();
-  const formattedDate = date[0].fechaindicador.toISOString().slice(0, 10);
+  const formattedDate = date[0]?.fechaindicador.toISOString().slice(0, 10);
   return formattedDate
 }

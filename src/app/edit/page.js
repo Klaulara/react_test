@@ -6,6 +6,7 @@ import { onEdit } from "./edit";
 import { useSearchParams } from "next/navigation";
 
 const EditUf = async () => {
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const date = new Date(searchParams.get("date"));
