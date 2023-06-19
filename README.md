@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Database
 
-This projects needs a local database set up to run locally. The project uses postgreSQL as a database, use the following code to create the table. 
+This project needs a local database set up to run locally. The project uses postgreSQL as a database, using the following code to create the table. 
 
 ```
 CREATE TABLE indicadores (id INT, nombreindicador VARCHAR, codigoindicador VARCHAR, unidadmedidaindicador VARCHAR, valorindicador DECIMAL, fechaindicador DATE, tiempoindicador VARCHAR, origenindicador VARCHAR);
@@ -12,7 +12,11 @@ After setting up the database set up your local variables in a new file named .e
 
 ## Getting Started
 
-First, run the development server:
+First, install the node_modules
+
+```npm install```
+
+Second, run the development server:
 
 ```bash
 npm run dev
